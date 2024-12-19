@@ -19,10 +19,7 @@ namespace backend.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employee>>> GetAllEmployeesAsync()
-        {
-            return Ok(await employeeRepository.GetAllEmployeesAsync());
-        }
+        public async Task<ActionResult<IEnumerable<Employee>>> GetAllEmployeesAsync() => Ok(await employeeRepository.GetAllEmployeesAsync());
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Employee?>> GetEmployeeByIdAsync(int id)
