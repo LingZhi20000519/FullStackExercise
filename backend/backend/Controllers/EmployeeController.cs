@@ -33,7 +33,7 @@ namespace backend.Controllers
         public async Task<ActionResult<Employee>> CreateEmployee(Employee employee)
         {
             await employeeRepository.AddEmployeeAsync(employee);
-            return Created();
+            return Ok(employee);
         }
 
         [HttpDelete("{id}")]

@@ -10,8 +10,7 @@ import { Observable } from 'rxjs';
 export class EmployeeService {
   private apiUrl = `${environment.apiUrl}/employee`
   constructor(private http: HttpClient) { }
-  getEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.apiUrl);
-  }
+  getEmployees(): Observable<Employee[]> { return this.http.get<Employee[]>(this.apiUrl); }
 
+  createEmployees(employee: Employee): Observable<Employee> { return this.http.post<Employee>(this.apiUrl, employee) }
 }
