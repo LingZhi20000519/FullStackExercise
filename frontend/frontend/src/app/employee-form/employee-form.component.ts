@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-employee-form',
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './employee-form.component.html',
   styleUrl: './employee-form.component.css'
 })
@@ -28,7 +28,7 @@ export class EmployeeFormComponent {
       next: () => { this.router.navigate(['/']) },
       error: (err) => {
         console.error(err);
-        this.errorMessage = `Error:${err.status}`;
+        this.errorMessage = `Error:${err.status} - ${err.errorMessage}`;
       }
     });
   }

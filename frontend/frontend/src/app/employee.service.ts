@@ -4,13 +4,11 @@ import { environment } from '../envirments/environment';
 import { Employee } from '../models/employee';
 import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({providedIn: 'root'})
 export class EmployeeService {
   private apiUrl = `${environment.apiUrl}/employee`
   constructor(private http: HttpClient) { }
   getEmployees(): Observable<Employee[]> { return this.http.get<Employee[]>(this.apiUrl); }
-
   createEmployees(employee: Employee): Observable<Employee> { return this.http.post<Employee>(this.apiUrl, employee) }
+  deleteEmployees(id: number): Observable<void> { return this.http.delete<void>(`${this.apiUrl}/${id}`) }
 }

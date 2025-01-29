@@ -12,11 +12,19 @@ import { CommonModule } from '@angular/common';
 export class EmployeeTableComponent {
   employees: Employee[] = [];
   constructor(private employeeService: EmployeeService) { }
+
+  // Init Employee Form
   ngOnInit() {
     this.employeeService.getEmployees().subscribe((data: Employee[]) => {
       this.employees = data;
       console.log(data)
     });
-
   }
+
+  // delete Employee
+  deleteEmployee(id:number){this.employeeService.deleteEmployees(id).subscribe({
+    next:(response)=>{this.employees = this.employees.filter(e=>e.id!==id);},
+    error:(err)=>{console.log(err);}
+  })}
+
 }
