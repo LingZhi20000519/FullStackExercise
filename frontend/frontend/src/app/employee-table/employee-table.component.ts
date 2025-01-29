@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Employee } from '../../models/employee';
 import { EmployeeService } from '../employee.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-table',
@@ -11,7 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class EmployeeTableComponent {
   employees: Employee[] = [];
-  constructor(private employeeService: EmployeeService) { }
+  constructor(private employeeService: EmployeeService,private router:Router) { }
 
   // Init Employee Form
   ngOnInit() {
@@ -27,4 +28,6 @@ export class EmployeeTableComponent {
     error:(err)=>{console.log(err);}
   })}
 
+  // edit Employee
+  editEmployee(id:number):void{this.router.navigate(['/edit',id]);}
 }
